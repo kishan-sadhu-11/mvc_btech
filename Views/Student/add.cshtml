@@ -1,0 +1,74 @@
+﻿@model mvc_btech.Models.StudentModel
+
+@{
+    ViewData["Title"] = "Add Student";
+}
+
+<div class="container mt-4">
+    <div class="card shadow">
+        <div class="card-header bg-primary text-white">
+            <h4>Add New Student</h4>
+        </div>
+
+        <div class="card-body">
+            <form asp-action="Add" method="post">
+
+                <!-- Validation Summary -->
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <!-- Student Name -->
+                <div class="mb-3">
+                    <label asp-for="studentname" class="form-label"></label>
+                    <input asp-for="studentname" class="form-control" />
+                    <span asp-validation-for="studentname" class="text-danger"></span>
+                </div>
+
+                <!-- Branch -->
+                <div class="mb-3">
+                    <label asp-for="studentbranch" class="form-label"></label>
+                    <input asp-for="studentbranch" class="form-control" />
+                    <span asp-validation-for="studentbranch" class="text-danger"></span>
+                </div>
+
+                <!-- Email -->
+                <div class="mb-3">
+                    <label asp-for="student_email" class="form-label"></label>
+                    <input asp-for="student_email" class="form-control" />
+                    <span asp-validation-for="student_email" class="text-danger"></span>
+                </div>
+
+                <!-- Date of Birth -->
+                <div class="mb-3">
+                    <label asp-for="DOB" class="form-label"></label>
+                    <input asp-for="DOB" type="date" class="form-control" />
+                    <span asp-validation-for="DOB" class="text-danger"></span>
+                </div>
+
+                <!-- City -->
+                <div class="mb-3">
+                    <label asp-for="city" class="form-label"></label>
+                    <input asp-for="city" class="form-control" />
+                    <span asp-validation-for="city" class="text-danger"></span>
+                </div>
+
+                <!-- Buttons -->
+                <div class="d-flex justify-content-between">
+                    <a asp-action="Index" class="btn btn-secondary">
+                        Back to List
+                    </a>
+
+                    <button type="submit" class="btn btn-success">
+                        Save Student
+                    </button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

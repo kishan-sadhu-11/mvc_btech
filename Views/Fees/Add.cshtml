@@ -1,0 +1,56 @@
+﻿@{
+    ViewData["Title"] = "Pay Fees";
+}
+
+<h3>Pay Fees</h3>
+
+<input type="number" id="amount" placeholder="Enter Amount" class="form-control mb-3" />
+<input type="number" id="student_id" placeholder="Enter Student ID" class="form-control mb-3" />
+
+<button id="payBtn" class="btn btn-success">Pay Now</button>
+
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    $("#payBtn").click(function () {
+
+        var amount = $("#amount").val();
+        var student_id = $("#student_id").val();
+
+        $.post("/Fees/CreateOrder", { amount: amount }, function (data) {
+
+            var options = {
+                "key": data.key,
+                "amount": amount * 100,
+                "currency": "INR",
+                "name": "School Management",
+                "description": "Fees Payment",
+                "order_id": data.orderId,
+
+                "handler": function (response) {
+
+                    $.post("/Fees/PaymentSuccess", {
+                        razorpay_payment_id: response.razorpay_payment_id,
+                        razorpay_order_id: response.razorpay_order_id,
+                        razorpay_signature: response.razorpay_signature,
+                        amount: amount,
+                        student_id: student_id
+                    }, function (res) {
+
+                        if (res.success) {
+                            alert("Payment Successful!");
+                            window.location.href = "/Fees/Index";
+                        }
+                        else {
+                            alert("Payment Verification Failed!");
+                        }
+                    });
+                }
+            };
+
+            var rzp1 = new Razorpay(options);
+            rzp1.open();
+        });
+    });
+</script>
