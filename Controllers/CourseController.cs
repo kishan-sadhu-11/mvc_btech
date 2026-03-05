@@ -1,24 +1,23 @@
-﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using mvc_btech.DBFOLDER;
 using mvc_btech.Models;
 
 namespace mvc_btech.Controllers
 {
-    public class StudentController : Controller
+    public class CourseController : Controller
     {
         private readonly STUDENTDB db;
 
-        public StudentController(STUDENTDB db)
+        public CourseController(STUDENTDB db)
         {
             this.db = db;
         }
 
-        // Display all data
         public async Task<IActionResult> Index()
         {
-            var students = await db.students.ToListAsync();
-            return View(students);
+            var courses = await db.courses.ToListAsync();
+            return View(courses);
         }
 
         [HttpGet]
@@ -28,16 +27,16 @@ namespace mvc_btech.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(StudentModel s)
+        public IActionResult Create(CourseModel c)
         {
             if (ModelState.IsValid)
             {
-                db.students.Add(s);
+                db.courses.Add(c);
                 db.SaveChanges();
-                TempData["msg"] = "Student Added Successfully";
+                TempData["msg"] = "Course Added Successfully";
                 return RedirectToAction("Index");
             }
-            return View(s);
+            return View(c);
         }
     }
 }

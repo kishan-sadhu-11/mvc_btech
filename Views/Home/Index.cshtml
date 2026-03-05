@@ -1,8 +1,98 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Dashboard";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="row g-4 mb-4">
+    <div class="col-md-3">
+        <div class="card bg-primary text-white shadow border-0 h-100">
+            <div class="card-body d-flex align-items-center">
+                <div class="flex-grow-1">
+                    <h6 class="text-uppercase mb-1">Total Students</h6>
+                    <h3 class="fw-bold mb-0">1,250</h3>
+                </div>
+                <div class="fs-1 opacity-50"><i class="bi bi-people"></i></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card bg-success text-white shadow border-0 h-100">
+            <div class="card-body d-flex align-items-center">
+                <div class="flex-grow-1">
+                    <h6 class="text-uppercase mb-1">Total Teachers</h6>
+                    <h3 class="fw-bold mb-0">85</h3>
+                </div>
+                <div class="fs-1 opacity-50"><i class="bi bi-person-badge"></i></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card bg-warning text-dark shadow border-0 h-100">
+            <div class="card-body d-flex align-items-center">
+                <div class="flex-grow-1">
+                    <h6 class="text-uppercase mb-1">Active Courses</h6>
+                    <h3 class="fw-bold mb-0">24</h3>
+                </div>
+                <div class="fs-1 opacity-50"><i class="bi bi-book"></i></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card bg-danger text-white shadow border-0 h-100">
+            <div class="card-body d-flex align-items-center">
+                <div class="flex-grow-1">
+                    <h6 class="text-uppercase mb-1">Revenue</h6>
+                    <h3 class="fw-bold mb-0">₹4.5L</h3>
+                </div>
+                <div class="fs-1 opacity-50"><i class="bi bi-cash-stack"></i></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-8">
+        <div class="card shadow border-0">
+            <div class="card-header bg-white py-3">
+                <h5 class="mb-0 fw-bold">Recent Activities</h5>
+            </div>
+            <div class="card-body">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item d-flex justify-content-between align-items-center px-0">
+                        <div>
+                            <span class="badge bg-info text-dark me-2">Admission</span>
+                            New student <strong>Rahul Sharma</strong> joined Class 10A.
+                        </div>
+                        <small class="text-muted">2 mins ago</small>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center px-0">
+                        <div>
+                            <span class="badge bg-success me-2">Fees</span>
+                            Payment received for <strong>Sneha Patel</strong> (Term 1).
+                        </div>
+                        <small class="text-muted">1 hour ago</small>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center px-0">
+                        <div>
+                            <span class="badge bg-warning text-dark me-2">Exam</span>
+                            Final results for <strong>Semester 2</strong> published.
+                        </div>
+                        <small class="text-muted">Yesterday</small>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card shadow border-0">
+            <div class="card-header bg-white py-3">
+                <h5 class="mb-0 fw-bold">System Status</h5>
+            </div>
+            <div class="card-body text-center py-5">
+                <div class="spinner-grow text-success mb-3" role="status"></div>
+                <h6 class="fw-bold">All Systems Normal</h6>
+                <p class="text-muted small">Your database is synced and up to date.</p>
+                <button class="btn btn-outline-primary btn-sm">Refresh Logs</button>
+            </div>
+        </div>
+    </div>
 </div>

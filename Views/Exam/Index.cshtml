@@ -1,0 +1,49 @@
+@model IEnumerable<mvc_btech.Models.ExamModel>
+
+@{
+    ViewData["Title"] = "Exams";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2>Exam Schedules</h2>
+</div>
+
+<div class="card shadow">
+    <div class="card-header bg-danger text-white">
+        <h4 class="mb-0">Upcoming Exams</h4>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered text-center">
+                <thead class="table-light">
+                    <tr>
+                        <th>Exam ID</th>
+                        <th>Subject</th>
+                        <th>Exam Date</th>
+                        <th>Marks</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model != null && Model.Any())
+                    {
+                        foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.exam_id</td>
+                                <td>@item.subject</td>
+                                <td>@item.exam_date.ToShortDateString()</td>
+                                <td>@item.marks</td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td colspan="4" class="text-muted">No exams scheduled.</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

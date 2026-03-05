@@ -39,8 +39,8 @@ namespace mvc_btech.Controllers
         {
             try
             {
-                string key = _config["Razorpay:Key"];
-                string secret = _config["Razorpay:Secret"];
+                string key = _config["Razorpay:Key"] ?? "";
+                string secret = _config["Razorpay:Secret"] ?? "";
 
                 RazorpayClient client = new RazorpayClient(key, secret);
 
@@ -67,7 +67,7 @@ namespace mvc_btech.Controllers
                                             decimal amount,
                                             int student_id)
         {
-            string secret = _config["Razorpay:Secret"];
+            string secret = _config["Razorpay:Secret"] ?? "";
 
             // Signature verification
             string generatedSignature = GenerateSignature(razorpay_order_id + "|" + razorpay_payment_id, secret);

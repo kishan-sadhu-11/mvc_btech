@@ -1,0 +1,50 @@
+@model mvc_btech.Models.CourseModel
+
+@{
+    ViewData["Title"] = "Add Course";
+}
+
+<div class="container mt-4">
+    <div class="card shadow" style="max-width: 600px; margin: auto;">
+        <div class="card-header bg-success text-white">
+            <h4 class="mb-0">Add New Course</h4>
+        </div>
+
+        <div class="card-body">
+            <form asp-action="Create" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <div class="mb-3">
+                    <label asp-for="coursename" class="form-label">Course Name</label>
+                    <input asp-for="coursename" class="form-control" placeholder="e.g. Full Stack Development" />
+                    <span asp-validation-for="coursename" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="duration" class="form-label">Duration (Months)</label>
+                    <input asp-for="duration" type="number" class="form-control" placeholder="e.g. 6" />
+                    <span asp-validation-for="duration" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="fees" class="form-label">Course Fees (INR)</label>
+                    <input asp-for="fees" type="number" step="0.01" class="form-control" placeholder="e.g. 15000" />
+                    <span asp-validation-for="fees" class="text-danger"></span>
+                </div>
+
+                <div class="d-flex justify-content-between mt-4">
+                    <a asp-action="Index" class="btn btn-secondary">
+                        <i class="bi bi-arrow-left"></i> Back to List
+                    </a>
+                    <button type="submit" class="btn btn-success">
+                        <i class="bi bi-save"></i> Save Course
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

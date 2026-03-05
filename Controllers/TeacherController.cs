@@ -14,29 +14,29 @@ namespace mvc_btech.Controllers
             this.db = db;
         }
 
-        public async Task<IActionResult> index()
+        public async Task<IActionResult> Index()
         {
             var teachers = await db.teachers.ToListAsync();
             return View(teachers);
         }
 
-        public IActionResult Add()
+        [HttpGet]
+        public IActionResult Create()
         {
             return View();
         }
 
         [HttpPost]
-        public IActionResult Add(TeacherModel t)
+        public IActionResult Create(TeacherModel t)
         {
             if (ModelState.IsValid)
             {
                 db.teachers.Add(t);
                 db.SaveChanges();
+                TempData["msg"] = "Teacher Added Successfully";
                 return RedirectToAction("Index");
             }
             return View(t);
         }
-    
+    }
 }
-}
-

@@ -12,5 +12,6 @@ namespace mvc_btech.DBFOLDER
         public DbSet<TeacherModel> teachers { get; set; }
         public DbSet<FeesModel> fees { get; set; }
         public DbSet<ExamModel> exams { get; set; }
+        public DbSet<CourseModel> courses { get; set; }
     }
 }
